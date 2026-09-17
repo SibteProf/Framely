@@ -1,25 +1,63 @@
 {
   "expo": {
-    "name": "framely",
+    "name": "Framely",
     "slug": "framely",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
+    "userInterfaceStyle": "dark",
+    "backgroundColor": "#0E0E12",
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.metafusion.framely",
+      "infoPlist": {
+        "NSPhotoLibraryUsageDescription": "Framely needs access to your photos so you can crop and edit them.",
+        "NSPhotoLibraryAddUsageDescription": "Framely saves your cropped photos to your library."
+      }
     },
     "android": {
       "adaptiveIcon": {
-        "backgroundColor": "#E6F4FE",
+        "backgroundColor": "#0E0E12",
         "foregroundImage": "./assets/android-icon-foreground.png",
         "backgroundImage": "./assets/android-icon-background.png",
         "monochromeImage": "./assets/android-icon-monochrome.png"
       },
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "package": "com.metafusion.framely"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      "expo-sharing",
+      "expo-font",
+      "expo-status-bar",
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Framely needs access to your photos so you can crop and edit them.",
+          "cameraPermission": false,
+          "microphonePermission": false
+        }
+      ],
+      [
+        "expo-media-library",
+        {
+          "photosPermission": "Framely needs access to your photos so you can crop and edit them.",
+          "savePhotosPermission": "Framely saves your cropped photos to your library.",
+          "isAccessMediaLocationEnabled": false,
+          "granularPermissions": ["photo"]
+        }
+      ],
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/splash-icon.png",
+          "backgroundColor": "#0E0E12",
+          "imageWidth": 180,
+          "resizeMode": "contain"
+        }
+      ]
+    ]
   }
 }
