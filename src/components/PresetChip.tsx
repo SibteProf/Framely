@@ -2,11 +2,15 @@ import React from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import {
   Canvas,
+  FilterMode,
   Image as SkiaImage,
+  MipmapMode,
   type SkImage,
 } from '@shopify/react-native-skia';
 import { colors, fonts, radii, spacing } from '../theme';
 import type { Preset } from '../constants/presets';
+
+const HQ_SAMPLING = { filter: FilterMode.Linear, mipmap: MipmapMode.Linear };
 
 type Props = {
   preset: Preset;
@@ -52,6 +56,7 @@ export default function PresetChip({ preset, active, image, onPress }: Props) {
               width={width}
               height={height}
               fit="cover"
+              sampling={HQ_SAMPLING}
             />
           </Canvas>
         )}

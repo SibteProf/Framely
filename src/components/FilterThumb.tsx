@@ -4,11 +4,15 @@ import {
   Canvas,
   ColorMatrix,
   Fill,
+  FilterMode,
   Image as SkiaImage,
+  MipmapMode,
   type SkImage,
 } from '@shopify/react-native-skia';
 import { colors, fonts, spacing } from '../theme';
 import type { FilterDef } from '../constants/filters';
+
+const HQ_SAMPLING = { filter: FilterMode.Linear, mipmap: MipmapMode.Linear };
 
 type Props = {
   filter: FilterDef;
@@ -34,6 +38,7 @@ export default function FilterThumb({ filter, image, active, onPress }: Props) {
                 width={SIZE}
                 height={SIZE}
                 fit="cover"
+                sampling={HQ_SAMPLING}
               >
                 <ColorMatrix matrix={filter.matrix} />
               </SkiaImage>

@@ -7,9 +7,11 @@ import {
   Canvas,
   ColorMatrix,
   Fill,
+  FilterMode,
   Group,
   Image as SkiaImage,
   Line,
+  MipmapMode,
   Rect,
   rect,
   rrect,
@@ -19,6 +21,8 @@ import {
 import { colors, radii } from '../theme';
 
 export type FitMode = 'fill' | 'fit';
+
+const HQ_SAMPLING = { filter: FilterMode.Linear, mipmap: MipmapMode.Linear };
 
 type Props = {
   canvasRef: React.RefObject<any>;
@@ -150,6 +154,7 @@ export default function CropCanvas({
               width={imgW}
               height={imgH}
               fit="fill"
+              sampling={HQ_SAMPLING}
             >
               <ColorMatrix matrix={colorMatrix} />
             </SkiaImage>
@@ -166,6 +171,7 @@ export default function CropCanvas({
                 width={imgW}
                 height={imgH}
                 fit="fill"
+                sampling={HQ_SAMPLING}
               >
                 <Blur blur={26} />
               </SkiaImage>
@@ -187,6 +193,7 @@ export default function CropCanvas({
                 width={imgW}
                 height={imgH}
                 fit="fill"
+                sampling={HQ_SAMPLING}
               >
                 <ColorMatrix matrix={colorMatrix} />
               </SkiaImage>
